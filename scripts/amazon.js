@@ -4,7 +4,7 @@ import { formatMoney } from './utils/money.js';
 
 let productsHTML = '';
 
-products.forEach((product) => {
+products.forEach((product) => { 
   productsHTML += `
     <div class="product-container">
       <div class="product-image-container">
@@ -84,3 +84,4 @@ document.querySelectorAll('.js-add-to-cart')
 
     });
   });
+  updateCartQuantity();
