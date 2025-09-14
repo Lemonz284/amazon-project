@@ -1,9 +1,8 @@
-import { cart , removeFromCart , updateDeliveryOption} from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { cart } from '../../data/cart.js';
+import { products} from '../../data/products.js';
 import { formatMoney } from '../utils/money.js';
 import { deliveryOptions } from '../../data/deliveryOptions.js';
-import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; 
-
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 
 export function renderOrderSummary()
@@ -159,4 +158,5 @@ export function renderOrderSummary()
       });
     });
 }
+
 

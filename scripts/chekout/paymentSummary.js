@@ -1,7 +1,9 @@
-import { cart , removeFromCart , updateDeliveryOption} from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { cart } from '../../data/cart.js';
+import { products,getProduct } from '../../data/products.js';
 import { formatMoney } from '../utils/money.js';
-import { deliveryOptions } from '../../data/deliveryOptions.js';
+import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+
 
 export function renderPaymentSummary()
 {
@@ -14,23 +16,18 @@ export function renderPaymentSummary()
           cartQuantity += cartItem.quantity;
 
           const productId = cartItem.productId;
-          let matchProduct;
-          products.forEach((p) => {
-              if(p.id === productId) {
-                matchProduct = p;
-              }
-            });
+          const matchProduct=getProduct(productId);
+
             cartPriceCents += (matchProduct.priceCents * cartItem.quantity);
 
             const deliveryOptionId= cartItem.deliveryOptionId;
-              let deliveryOption;
-            deliveryOptions.forEach((option) => {
-              if(String(option.id) === String(deliveryOptionId))
-              {
-                deliveryOption=option;
-          } 
-          });
-          shippingPriceCents += (deliveryOption.priceCents );
+            const deliveryOption= getDeliveryOption(deliveryOptionId);
+            
+            shippingPriceCents += (deliveryOption.priceCents );
+
+            console.log(shippingPriceCents);
+            console.log(cartPriceCents);
+            console.log(cartQuantity);
 
     });
     pHTML= `

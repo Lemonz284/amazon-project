@@ -6,6 +6,7 @@ export function getProduct(productId)
                 matchProduct = p;
               }
             });
+  return matchProduct;
 }
 
 export const products = [
