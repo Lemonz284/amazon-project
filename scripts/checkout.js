@@ -2,10 +2,10 @@ import { cart , removeFromCart , updateDeliveryOption} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatMoney } from './utils/money.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; 
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; 
 
 
- 
+  
 let cartHTML = '';
 cart.forEach((cartItem) => {
   const productId= cartItem.productId;
@@ -26,7 +26,7 @@ cart.forEach((cartItem) => {
 
 cartHTML += `
         <div class="cart-item-container js-cart-item-container-${matchProduct.id}" >
-          <div class ="delivery-date">
+          <div class ="delivery-date js-delivery-date">
             Delivery date: ${dateString}
           </div>
 
@@ -86,18 +86,18 @@ function deliveryOptionsHTML(matchProduct, cartItem)
          data-delivery-option-id="${deliveryOption.id}">
                   <input type="radio" 
                     ${isChecked ? 'checked' : '' }
-                    class="delivery-option-input "
-                    name="delivery-option-${matchProduct.id}">
-                  <div>   
-                      <div class="delivery-option-date">
+                    class="delivery-option-input"
+                    name="delivery-option-${matchProduct.id}">  
+                <div class="delivery-option-date">
                       ${dateString}
-                    </div>
+                </div>
                     <div class="delivery-option-price">
                       ${priceString} Shipping
                     </div>
-                </div>
           </div>
+             
     `;
+    
 
   });
   return delHTML; 
