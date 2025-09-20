@@ -1,11 +1,11 @@
-import { cart } from '../../data/cart.js';
+import { cart,updateDeliveryOption,removeFromCart } from '../../data/cart.js';
 import { products} from '../../data/products.js';
 import { formatMoney } from '../utils/money.js';
 import { deliveryOptions } from '../../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 
-export function renderOrderSummary()
+export function renderOrderSummary() 
 {
     let cartHTML = '';
 
@@ -131,7 +131,7 @@ export function renderOrderSummary()
       console.error("Could not find .js-order-summary element");
     }
 
-
+    
     document.querySelectorAll('.js-delete-link').forEach((deleteLink) => {
       deleteLink.addEventListener('click', (event) => {
         
@@ -158,5 +158,3 @@ export function renderOrderSummary()
       });
     });
 }
-
-
